@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider4</title>
+    <link rel="stylesheet" href="css/slider4.css">
+</head>
+
+<body>
+    <div id="slider">
+        <div class="container_btn">
+            <div id="btn_next" class="btn"></div>
+            <div id="btn_prev" class="btn"></div>
+        </div>
+        <img src="images/paysage1.jpg" alt="paysage1" class="nb_img active">
+        <img src="images/paysage2.jpg" alt="paysage2" class="nb_img">
+        <img src="images/barque.jpg" alt="barque" class="nb_img">
+    </div>
+    
+    <script>
+        let image = document.querySelectorAll('#slider .nb_img');
+        let btnNext = document.querySelector('#btn_next');
+        let btnPrev = document.querySelector('#btn_prev');
+        let nbImage = image.length;
+        let count = 0;
+        
+        function rca(){
+             for(let img of image){
+            img.classList.remove("active");
+        }
+        }
+        function slideNext(){
+            count++;
+            if(count >= nbImage){
+                count = 0;
+            }
+            rca();
+            image[count].classList.add("active");
+        }
+         
+        btnNext.addEventListener("click", ()=>{
+            slideNext();
+        });
+        
+        function slidePrev(){
+            count--;
+            if(count <= 0){
+                count = nbImage-1;
+            }
+            rca();
+            image[count].classList.add("active");
+        }
+         
+        btnPrev.addEventListener("click", ()=>{
+            slidePrev();
+        });
+    </script>
+</body>
+</html>
